@@ -18,6 +18,7 @@ kernel/src/*.o
 
 # Built kernel
 kernel/kernel.elf
+iso/kernel.elf
 
 # Generated ISO contents
 iso/boot/kernel.elf
