@@ -4,3 +4,23 @@ Toolchain/downloads
 Toolchain/src
 
 docs/code-template.txt
+
+build/
+
+*.fd
+
+# ===========================
+# Sevrux Kernel Build
+# ===========================
+
+# Object files
+kernel/src/*.o
+
+# Built kernel
+kernel/kernel.elf
+
+# Generated ISO contents
+iso/boot/kernel.elf
+
+# Final ISO
+sevrux.iso
