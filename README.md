@@ -6,6 +6,7 @@ Sevrux is an experimental 64-bit operating system written from scratch in C and 
 
 Licensed under the GNU General Public License v3.0.
 See the [LICENSE](LICENSE) file for details.
+
 see the [COPYRIGHT](COPYRIGHT) for copyright details.
 
 ## Project Status
