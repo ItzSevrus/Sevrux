@@ -1,20 +1,18 @@
-# ===== Subprojects =====
+ISO = sevrux.iso
 
-BOOTLOADER_DIR := bootloader
+all:
+	$(MAKE) -C kernel
 
-# ===== Targets =====
+	mkdir -p iso/boot
 
-all: bootloader
+	cp kernel/kernel.elf iso/boot/
 
-bootloader:
-	$(MAKE) -C $(BOOTLOADER_DIR) all copy
+	grub-mkrescue -o $(ISO) iso
 
-run:
-	qemu-system-x86_64     -drive if=pflash,format=raw,readonly=on,file=/usr/share/edk2/x64/OVMF_CODE.4m.fd     -drive if=pflash,format=raw,file=OVMF_VARS.4m.fd     -drive format=raw,file=fat:rw:iso
-
-# ===== Clean =====
+run: all
+	qemu-system-x86_64 -cdrom $(ISO)
 
 clean:
-	$(MAKE) -C $(BOOTLOADER_DIR) clean
-
-.PHONY: all bootloader clean
+	$(MAKE) -C kernel clean
+	rm -f $(ISO)
+	rm -f iso/boot/kernel.elf
